@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pioneer Plywoods — Karnataka's Finest Plywood</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy:   #0d2b45;
+  --blue:   #1a5a8a;
+  --sky:    #2e9cca;
+  --light:  #c8e8f5;
+  --pale:   #eaf5fb;
+  --white:  #ffffff;
+  --off:    #f2f8fc;
+  --muted:  #4e7590;
+  --text:   #0a1e2e;
+  --accent: #1b8ec4;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Barlow', sans-serif;
+  background: var(--white);
+  color: var(--text);
+  overflow-x: hidden;
+}
+
+/* ══ NAV ══ */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 200;
+  height: 70px;
+  padding: 0 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(13, 43, 69, 0.97);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(46,156,202,0.18);
+  transition: box-shadow 0.3s;
+}
+
+.nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+.logo-container { width: 52px; height: 52px; overflow: hidden; flex-shrink: 0; }
+.logo-container img { width: 100%; display: block; }
+.nav-logo-name {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 22px; font-weight: 700;
+  letter-spacing: 1px; color: var(--white);
+  line-height: 1.1; text-transform: uppercase;
+}
+.nav-logo-name span {
+  display: block; font-size: 9px; font-family: 'Barlow', sans-serif;
+  font-weight: 400; letter-spacing: 3.5px; text-transform: uppercase;
+  color: var(--light); margin-top: 1px;
+}
+
+.nav-links { display: flex; align-items: center; gap: 36px; list-style: none; }
+.nav-links a {
+  text-decoration: none; font-size: 13px; font-weight: 500;
+  letter-spacing: 0.8px; text-transform: uppercase;
+  color: rgba(200,232,245,0.7); transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--light); }
+.nav-cta {
+  padding: 9px 24px !important;
+  background: var(--sky) !important;
+  color: var(--white) !important;
+  border-radius: 3px; font-weight: 600 !important;
+}
+.nav-cta:hover { background: var(--accent) !important; transform: translateY(-1px); }
+
+/* ══ HERO ══ */
+.hero {
+  position: relative;
+  width: 100%; height: 100vh; min-height: 600px;
+  overflow: hidden;
+  display: flex; align-items: flex-end; justify-content: flex-start;
+}
+
+.hero-bg {
+  position: absolute; inset: 0; z-index: 0;
+}
+.hero-bg img {
+  width: 100%; height: 100%; object-fit: cover;
+  filter: brightness(0.75);
+}
+
+.hero-overlay {
+  position: absolute; inset: 0; z-index: 1;
+  background: linear-gradient(
+    135deg,
+    rgba(13,43,69,0.78) 0%,
+    rgba(13,43,69,0.52) 55%,
+    rgba(13,43,69,0.28) 100%
+  );
+}
+
+.hero::after {
+  content: '';
+  position: absolute; bottom: 0; left: 0; right: 0;
+  height: 160px;
+  background: linear-gradient(to top, var(--white), transparent);
+  z-index: 2;
+}
+
+.hero-content {
+  position: relative; z-index: 3;
+  padding: 0 64px 120px;
+  max-width: 700px;
+  animation: fadeInUp 0.9s 0.15s both;
+}
+
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: 11px; font-weight: 600; letter-spacing: 4px;
+  text-transform: uppercase; color: var(--light); margin-bottom: 18px;
+}
+.hero-eyebrow::before {
+  content: ''; display: block;
+  width: 30px; height: 2px; background: var(--sky);
+}
+
+.hero-tagline {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: clamp(48px, 7vw, 90px);
+  font-weight: 900; line-height: 0.95;
+  color: var(--white); text-transform: uppercase;
+  letter-spacing: 1px; margin-bottom: 20px;
+}
+.hero-tagline span { color: #7ecef0; }
+
+.hero-sub {
+  font-size: 16px; font-weight: 300;
+  color: rgba(200,232,245,0.78);
+  line-height: 1.7; max-width: 480px; margin-bottom: 36px;
+}
+
+.hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+
+.btn-primary {
+  padding: 13px 32px;
+  background: var(--sky); color: var(--white);
+  font-family: 'Barlow', sans-serif;
+  font-weight: 600; font-size: 14px;
+  letter-spacing: 0.5px; text-transform: uppercase;
+  border-radius: 3px; text-decoration: none;
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+  box-shadow: 0 4px 20px rgba(46,156,202,0.4);
+}
+.btn-primary:hover { background: var(--accent); transform: translateY(-2px); }
+
+.btn-outline {
+  padding: 13px 32px; background: transparent;
+  border: 1.5px solid rgba(200,232,245,0.45);
+  color: var(--white);
+  font-family: 'Barlow', sans-serif;
+  font-weight: 500; font-size: 14px;
+  letter-spacing: 0.5px; text-transform: uppercase;
+  border-radius: 3px; text-decoration: none;
+  transition: border-color 0.2s, background 0.2s;
+}
+.btn-outline:hover { border-color: var(--light); background: rgba(200,232,245,0.1); }
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ══ SECTION COMMON ══ */
+section { position: relative; z-index: 1; }
+
+.section-label {
+  font-size: 10px; font-weight: 700;
+  letter-spacing: 4px; text-transform: uppercase;
+  color: var(--sky); margin-bottom: 12px;
+  display: flex; align-items: center; gap: 10px;
+}
+.section-label::before {
+  content: ''; display: block;
+  width: 22px; height: 2px; background: var(--sky);
+}
+
+.section-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: clamp(34px, 4vw, 56px);
+  font-weight: 800; line-height: 1.05;
+  letter-spacing: 0.5px; text-transform: uppercase;
+  margin-bottom: 14px;
+}
+
+/* ══ PRODUCTS ══ */
+.products {
+  background: var(--navy);
+  padding: 96px 64px;
+  position: relative; overflow: hidden;
+}
+.products::before {
+  content: ''; position: absolute; inset: 0;
+  background: repeating-linear-gradient(
+    90deg, transparent, transparent 60px,
+    rgba(255,255,255,0.015) 60px, rgba(255,255,255,0.015) 61px
+  );
+}
+
+.products-inner { max-width: 1280px; margin: 0 auto; position: relative; }
+
+.products-header {
+  display: flex; align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 52px; gap: 32px;
+}
+.products .section-label { color: #7ecef0; }
+.products .section-label::before { background: #7ecef0; }
+.products .section-title { color: var(--white); }
+.products-sub {
+  font-size: 14px; color: rgba(126,206,240,0.5);
+  font-weight: 300; max-width: 280px;
+  text-align: right; line-height: 1.6;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3px;
+}
+
+/* Product card with image */
+.product-card {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(126,206,240,0.08);
+  position: relative; overflow: hidden;
+  transition: background 0.3s, border-color 0.3s;
+  cursor: default;
+  display: flex; flex-direction: column;
+}
+.product-card::after {
+  content: ''; position: absolute;
+  bottom: 0; left: 0; right: 0; height: 2px;
+  background: var(--sky); transform: scaleX(0);
+  transform-origin: left; transition: transform 0.3s;
+}
+.product-card:hover { background: rgba(46,156,202,0.1); border-color: rgba(46,156,202,0.3); }
+.product-card:hover::after { transform: scaleX(1); }
+
+/* Product image */
+.product-img {
+  width: 100%; height: 180px;
+  object-fit: cover;
+  display: block;
+  filter: brightness(0.85) saturate(0.75);
+  transition: filter 0.3s, transform 0.4s;
+}
+.product-card:hover .product-img {
+  filter: brightness(0.95) saturate(0.85);
+  transform: scale(1.03);
+}
+
+.product-body { padding: 28px 28px 32px; flex: 1; display: flex; flex-direction: column; }
+
+.product-num {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 11px; color: rgba(46,156,202,0.45);
+  font-weight: 700; letter-spacing: 3px;
+  text-transform: uppercase; margin-bottom: 10px;
+}
+.product-name {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 24px; font-weight: 800;
+  color: var(--white); margin-bottom: 8px;
+  line-height: 1.1; text-transform: uppercase; letter-spacing: 0.5px;
+}
+.product-desc {
+  font-size: 13px; color: rgba(126,206,240,0.52);
+  font-weight: 300; line-height: 1.7; margin-bottom: 18px; flex: 1;
+}
+.product-specs { display: flex; flex-direction: column; gap: 5px; }
+.spec {
+  font-size: 11.5px; color: rgba(200,232,245,0.35);
+  display: flex; align-items: center; gap: 8px;
+}
+.spec::before { content: '—'; color: var(--sky); font-weight: 700; }
+
+/* ══ ABOUT ══ */
+.about-wrap {
+  padding: 96px 64px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px; align-items: center;
+  max-width: 1280px; margin: 0 auto;
+}
+
+.about-visual { position: relative; }
+.about-img-main {
+  width: 100%; aspect-ratio: 4/5;
+  object-fit: cover; border-radius: 4px;
+  display: block; filter: saturate(0.85);
+}
+.about-img-accent {
+  position: absolute; bottom: -30px; right: -30px;
+  width: 52%; aspect-ratio: 1;
+  object-fit: cover; border-radius: 4px;
+  border: 6px solid var(--white); filter: saturate(0.85);
+}
+.about-badge-box {
+  position: absolute; top: 24px; left: -22px;
+  background: var(--navy); color: var(--white);
+  padding: 14px 18px; border-radius: 4px;
+  text-align: center;
+  box-shadow: 0 8px 32px rgba(13,43,69,0.3);
+}
+.about-badge-num {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 42px; font-weight: 900;
+  color: #7ecef0; line-height: 1;
+}
+.about-badge-text {
+  font-size: 9px; letter-spacing: 2.5px;
+  text-transform: uppercase; color: rgba(126,206,240,0.6); margin-top: 3px;
+}
+
+.about-text .section-title { color: var(--text); }
+.about-body {
+  font-size: 15.5px; font-weight: 300;
+  color: var(--muted); line-height: 1.8; margin-bottom: 32px;
+}
+
+.about-features { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.about-feature { display: flex; align-items: flex-start; gap: 12px; }
+.feat-icon {
+  width: 36px; height: 36px;
+  background: var(--pale); border-radius: 4px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px; flex-shrink: 0; margin-top: 2px;
+}
+.feat-text strong {
+  display: block; font-size: 13.5px; font-weight: 600;
+  color: var(--text); margin-bottom: 2px;
+}
+.feat-text span { font-size: 12px; color: var(--muted); font-weight: 300; line-height: 1.4; }
+
+/* ══ WHY US ══ */
+.why { background: var(--off); padding: 96px 64px; }
+.why-inner { max-width: 1280px; margin: 0 auto; }
+
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px; margin-top: 52px;
+}
+.why-card {
+  padding: 32px 24px; background: var(--white);
+  border-radius: 4px; border-top: 3px solid transparent;
+  transition: border-color 0.3s, transform 0.2s, box-shadow 0.2s;
+}
+.why-card:hover {
+  border-top-color: var(--sky);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(13,43,69,0.1);
+}
+.why-num {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 56px; font-weight: 900;
+  color: rgba(46,156,202,0.1); line-height: 1; margin-bottom: 10px;
+}
+.why-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 20px; font-weight: 800;
+  text-transform: uppercase; letter-spacing: 0.5px;
+  margin-bottom: 10px; color: var(--text);
+}
+.why-desc { font-size: 13.5px; color: var(--muted); line-height: 1.7; font-weight: 300; }
+
+/* ══ CONTACT ══ */
+.contact {
+  padding: 96px 64px;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 80px; max-width: 1280px; margin: 0 auto;
+}
+
+.contact-info .section-title { color: var(--text); margin-bottom: 18px; }
+.contact-info > p {
+  font-size: 15px; color: var(--muted);
+  font-weight: 300; line-height: 1.8; margin-bottom: 36px;
+}
+
+.contact-details { display: flex; flex-direction: column; gap: 18px; }
+.c-item { display: flex; align-items: flex-start; gap: 14px; }
+.c-icon {
+  width: 40px; height: 40px;
+  background: var(--navy); border-radius: 4px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px; flex-shrink: 0;
+}
+.c-text strong {
+  display: block; font-size: 12px; font-weight: 700;
+  letter-spacing: 1px; text-transform: uppercase;
+  color: var(--text); margin-bottom: 3px;
+}
+.c-text span { font-size: 14px; color: var(--muted); font-weight: 300; line-height: 1.5; }
+
+.contact-form { background: var(--pale); padding: 38px; border-radius: 4px; }
+.contact-form h3 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 30px; font-weight: 800;
+  text-transform: uppercase; letter-spacing: 0.5px;
+  margin-bottom: 26px; color: var(--text);
+}
+
+.form-group { margin-bottom: 18px; }
+.form-group label {
+  display: block; font-size: 10px; font-weight: 700;
+  letter-spacing: 2.5px; text-transform: uppercase;
+  color: var(--muted); margin-bottom: 7px;
+}
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%; padding: 11px 15px;
+  background: var(--white);
+  border: 1.5px solid rgba(13,43,69,0.1);
+  border-radius: 3px;
+  font-family: 'Barlow', sans-serif;
+  font-size: 14px; font-weight: 400;
+  color: var(--text); outline: none;
+  transition: border-color 0.2s; -webkit-appearance: none;
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus { border-color: var(--sky); }
+.form-group textarea { resize: vertical; min-height: 95px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+.form-submit {
+  width: 100%; padding: 14px;
+  background: #25d366; color: var(--white); border: none;
+  border-radius: 3px;
+  font-family: 'Barlow', sans-serif;
+  font-size: 13px; font-weight: 700;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  cursor: pointer; transition: background 0.2s, transform 0.15s;
+  margin-top: 6px;
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+}
+.form-submit:hover { background: #1da851; transform: translateY(-1px); }
+
+/* ══ WHATSAPP FLOAT ══ */
+.whatsapp-btn {
+  position: fixed; bottom: 28px; right: 28px; z-index: 999;
+  width: 60px; height: 60px; background: #25d366;
+  border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  font-size: 30px; text-decoration: none;
+  box-shadow: 0 4px 16px rgba(37,211,102,0.45);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.whatsapp-btn:hover { transform: scale(1.12); box-shadow: 0 6px 24px rgba(37,211,102,0.6); }
+
+/* ══ FOOTER ══ */
+footer { background: var(--navy); padding: 60px 64px 30px; }
+.footer-inner { max-width: 1280px; margin: 0 auto; }
+.footer-top {
+  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 48px; padding-bottom: 44px;
+  border-bottom: 1px solid rgba(126,206,240,0.1);
+}
+.footer-brand-row { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+.footer-logo-container { width: 56px; height: 56px; overflow: hidden; flex-shrink: 0; }
+.footer-logo-container img { width: 100%; display: block; }
+.footer-brand .nav-logo-name { color: var(--white); font-size: 22px; }
+.footer-brand .nav-logo-name span { color: var(--light); }
+.footer-brand p {
+  margin-top: 12px; font-size: 13px; line-height: 1.7;
+  color: rgba(126,206,240,0.4); max-width: 270px;
+}
+.footer-col h4 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 13px; font-weight: 800;
+  letter-spacing: 3px; text-transform: uppercase;
+  color: #7ecef0; margin-bottom: 18px;
+}
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 9px; }
+.footer-col ul li a {
+  text-decoration: none; font-size: 13px;
+  color: rgba(126,206,240,0.4); transition: color 0.2s;
+}
+.footer-col ul li a:hover { color: var(--light); }
+.footer-bottom {
+  display: flex; justify-content: space-between; align-items: center;
+  padding-top: 26px; font-size: 12px;
+  color: rgba(126,206,240,0.38); flex-wrap: wrap; gap: 12px;
+}
+.footer-bottom a { color: rgba(126,206,240,0.35); text-decoration: none; }
+
+/* ══ SCROLL REVEAL ══ */
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+
+/* ══ MOBILE ══ */
+@media (max-width: 900px) {
+  nav { padding: 0 20px; }
+  .nav-links { display: none; }
+  .hero-content { padding: 0 20px 100px; }
+  .about-wrap, .contact { grid-template-columns: 1fr; padding: 60px 20px; gap: 40px; }
+  .about-visual { display: none; }
+  .products, .why { padding: 60px 20px; }
+  .products-grid { grid-template-columns: 1fr; }
+  .why-grid { grid-template-columns: 1fr 1fr; }
+  .products-header { flex-direction: column; align-items: flex-start; }
+  .products-sub { text-align: left; }
+  footer { padding: 44px 20px 22px; }
+  .footer-top { grid-template-columns: 1fr 1fr; gap: 28px; }
+  .form-row { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <a href="#home" class="nav-logo">
+    <div class="logo-container">
+      <img src="logo-full.png" alt="Pioneer Plywoods Logo">
+    </div>
+    <div class="nav-logo-name" style="margin-left:8px;">
+      Pioneer Plywoods
+      <span>Est. 2014, Karnataka, India</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#products">Products</a></li>
+    <li><a href="#about">About Us</a></li>
+    <li><a href="#why">Why Us</a></li>
+    <li><a href="#contact" class="nav-cta">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg">
+    <!-- High quality plywood/woodworking factory image from Unsplash -->
+    <img
+      src="https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?w=1800&q=85"
+      alt="Plywood manufacturing factory floor"
+    />
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Karnataka's Premium Manufacturer</div>
+    <h1 class="hero-tagline">
+      Strength in<br><span>Every Sheet</span>
+    </h1>
+    <p class="hero-sub">ISI-certified plywood and timber products — crafted for builders, architects, and furniture makers across Karnataka.</p>
+    <div class="hero-actions">
+      <a href="#products" class="btn-primary">Explore Products</a>
+      <a href="#contact" class="btn-outline">Contact Us</a>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="products" id="products">
+  <div class="products-inner">
+    <div class="products-header reveal">
+      <div>
+        <div class="section-label">What We Make</div>
+        <h2 class="section-title">Our Product Range</h2>
+      </div>
+      <p class="products-sub">From structural cores to finished doors — a grade for every application.</p>
+    </div>
+    <div class="products-grid">
+
+      <!-- 01 Commercial Plywood -->
+      <div class="product-card reveal">
+        <img class="product-img"
+          src="https://images.unsplash.com/photo-1541123437800-1bb1317badc2?w=700&q=80"
+          alt="Commercial Plywood stacks" />
+        <div class="product-body">
+          <div class="product-num">01</div>
+          <div class="product-name">Commercial Plywood</div>
+          <div class="product-desc">Everyday interior applications — economical, strong, and versatile for furniture and cabinets.</div>
+          <div class="product-specs">
+            <div class="spec">Thickness: 4mm to 25mm</div>
+            <div class="spec">Grade: MR (Moisture Resistant)</div>
+            <div class="spec">IS 303 Certified</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 02 Marine Plywood -->
+      <div class="product-card reveal reveal-delay-1">
+        <img class="product-img"
+          src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=700&q=80"
+          alt="Marine Plywood close up" />
+        <div class="product-body">
+          <div class="product-num">02</div>
+          <div class="product-name">Marine Plywood</div>
+          <div class="product-desc">Engineered for high-humidity zones — bathrooms, kitchens, and outdoor structures.</div>
+          <div class="product-specs">
+            <div class="spec">Thickness: 6mm to 25mm</div>
+            <div class="spec">Grade: BWP (Boiling Water Proof)</div>
+            <div class="spec">IS 710 Certified</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 03 Structural Plywood -->
+      <div class="product-card reveal reveal-delay-2">
+        <img class="product-img"
+          src="https://images.unsplash.com/photo-1504148455328-c376907d081c?w=700&q=80"
+          alt="Structural plywood on a construction site" />
+        <div class="product-body">
+          <div class="product-num">03</div>
+          <div class="product-name">Structural Plywood</div>
+          <div class="product-desc">Heavy-duty panels for load-bearing applications in construction and industrial use.</div>
+          <div class="product-specs">
+            <div class="spec">Thickness: 12mm to 32mm</div>
+            <div class="spec">Grade: BWR Structural</div>
+            <div class="spec">High Load Tolerance</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 04 Flush Doors -->
+      <div class="product-card reveal">
+        <img class="product-img"
+          src="https://images.unsplash.com/photo-1558618047-f4e60cee1f8a?w=700&q=80"
+          alt="Flush wooden doors in a row" />
+        <div class="product-body">
+          <div class="product-num">04</div>
+          <div class="product-name">Flush Doors</div>
+          <div class="product-desc">Factory-made solid and hollow core flush doors for residential and commercial use.</div>
+          <div class="product-specs">
+            <div class="spec">Sizes: Standard & Custom</div>
+            <div class="spec">Core: Solid / Hollow / Particle</div>
+            <div class="spec">IS 2202 Certified</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 05 Block Board -->
+      <div class="product-card reveal reveal-delay-1">
+        <img class="product-img"
+          src="https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?w=700&q=80"
+          alt="Block board cross section" />
+        <div class="product-body">
+          <div class="product-num">05</div>
+          <div class="product-name">Block Board</div>
+          <div class="product-desc">Ideal for shelving, tabletops, and partitions — excellent rigidity across wide spans.</div>
+          <div class="product-specs">
+            <div class="spec">Thickness: 19mm, 25mm</div>
+            <div class="spec">Core: Hardwood strips</div>
+            <div class="spec">Low warpage</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 06 Particle Board / MDF -->
+      <div class="product-card reveal reveal-delay-2">
+        <img class="product-img"
+          src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=700&q=80"
+          alt="Wood board material workshop" />
+        <div class="product-body">
+          <div class="product-num">06</div>
+          <div class="product-name">Particle Board</div>
+          <div class="product-desc">Smooth, uniform boards ideal for modular furniture, cabinetry, and low-cost interior panels.</div>
+          <div class="product-specs">
+            <div class="spec">Thickness: 8mm to 25mm</div>
+            <div class="spec">Smooth both sides</div>
+            <div class="spec">Termite & borer resistant</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT US -->
+<section id="about">
+  <div class="about-wrap">
+    <div class="about-visual reveal">
+      <img class="about-img-main"
+        src="https://images.unsplash.com/photo-1504148455328-c376907d081c?w=800&q=80"
+        alt="Plywood manufacturing facility" />
+      <img class="about-img-accent"
+        src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?w=500&q=80"
+        alt="Plywood stacks" />
+      <div class="about-badge-box">
+        <div class="about-badge-num">10+</div>
+        <div class="about-badge-text">Years of Trust</div>
+      </div>
+    </div>
+    <div class="about-text reveal reveal-delay-1">
+      <div class="section-label">Our Story</div>
+      <h2 class="section-title">Rooted in Karnataka,<br>Built for the Nation</h2>
+      <p class="about-body">Founded in 2014 in Karnataka, Pioneer Plywoods has been supplying high-quality plywood and timber products to builders, contractors, and furniture manufacturers across the state. We source responsibly, manufacture rigorously, and deliver reliably.</p>
+      <p class="about-body" style="margin-top:-18px;">Every sheet meets strict quality benchmarks, backed by ISI-certified processes and a team that truly cares about what goes into your walls and homes.</p>
+      <div class="about-features">
+        <div class="about-feature">
+          <div class="feat-icon">🏭</div>
+          <div class="feat-text">
+            <strong>Own Manufacturing</strong>
+            <span>In-house production with modern machinery</span>
+          </div>
+        </div>
+        <div class="about-feature">
+          <div class="feat-icon">✅</div>
+          <div class="feat-text">
+            <strong>ISI Certified</strong>
+            <span>Bureau of Indian Standards compliant</span>
+          </div>
+        </div>
+        <div class="about-feature">
+          <div class="feat-icon">🌿</div>
+          <div class="feat-text">
+            <strong>Eco-Responsible</strong>
+            <span>Sustainably sourced timber</span>
+          </div>
+        </div>
+        <div class="about-feature">
+          <div class="feat-icon">🚚</div>
+          <div class="feat-text">
+            <strong>Pan-Karnataka Delivery</strong>
+            <span>Reliable logistics to your doorstep</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="why" id="why">
+  <div class="why-inner">
+    <div class="reveal">
+      <div class="section-label">Why Choose Us</div>
+      <h2 class="section-title">The Pioneer Difference</h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-card reveal">
+        <div class="why-num">01</div>
+        <div class="why-title">Consistent Quality</div>
+        <div class="why-desc">Every batch undergoes strict in-house QC testing before it leaves our facility. No shortcuts, no compromises.</div>
+      </div>
+      <div class="why-card reveal reveal-delay-1">
+        <div class="why-num">02</div>
+        <div class="why-title">Competitive Pricing</div>
+        <div class="why-desc">Direct from manufacturer — best price without middleman markups, whether you buy 10 sheets or 10,000.</div>
+      </div>
+      <div class="why-card reveal reveal-delay-2">
+        <div class="why-num">03</div>
+        <div class="why-title">Custom Sizes & Grades</div>
+        <div class="why-desc">Non-standard dimensions or specialty finishes? We accommodate bulk custom orders for contractors and OEM buyers.</div>
+      </div>
+      <div class="why-card reveal reveal-delay-3">
+        <div class="why-num">04</div>
+        <div class="why-title">Fast Local Delivery</div>
+        <div class="why-desc">We ship across Karnataka efficiently — Bengaluru, Mysuru, Mangaluru, Hubli, and beyond.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-info reveal">
+    <div class="section-label">Get in Touch</div>
+    <h2 class="section-title">Let's Talk About Your Project</h2>
+    <p>Whether you're a contractor, architect, dealer, or individual buyer — we're ready to help you find the right product at the right price.</p>
+    <div class="contact-details">
+      <div class="c-item">
+        <div class="c-icon">📍</div>
+        <div class="c-text">
+          <strong>Location</strong>
+          <span>Pioneer Plywoods<br>Karnataka, India</span>
+        </div>
+      </div>
+      <div class="c-item">
+        <div class="c-icon">📞</div>
+        <div class="c-text">
+          <strong>Call / WhatsApp</strong>
+          <span><a href="tel:+919880777944" style="text-decoration:none;color:inherit;">+91 9880777944</a></span>
+        </div>
+      </div>
+      <div class="c-item">
+        <div class="c-icon">📧</div>
+        <div class="c-text">
+          <strong>Email</strong>
+          <span><a href="mailto:pioneerplywoods16@gmail.com" style="text-decoration:none;color:inherit;">pioneerplywoods16@gmail.com</a></span>
+        </div>
+      </div>
+      <div class="c-item">
+        <div class="c-icon">🕐</div>
+        <div class="c-text">
+          <strong>Working Hours</strong>
+          <span>Mon – Sat: 9:00 AM – 6:00 PM</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="contact-form reveal reveal-delay-1">
+    <h3>Send Us a Message</h3>
+    <div id="contactFormWrap">
+      <div class="form-row">
+        <div class="form-group">
+          <label>Your Name</label>
+          <input type="text" id="f-name" placeholder="e.g. Rajan Kumar" />
+        </div>
+        <div class="form-group">
+          <label>Phone Number</label>
+          <input type="tel" id="f-phone" placeholder="+91 98450 00000" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Product Interest</label>
+        <select id="f-product">
+          <option value="">Select a product type...</option>
+          <option>Commercial Plywood</option>
+          <option>Marine Plywood</option>
+          <option>Structural Plywood</option>
+          <option>Flush Doors</option>
+          <option>Block Board</option>
+          <option>Particle Board</option>
+          <option>Multiple Products</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Quantity Required</label>
+        <input type="text" id="f-qty" placeholder="e.g. 200 sheets, 50 doors..." />
+      </div>
+      <div class="form-group">
+        <label>Message</label>
+        <textarea id="f-msg" placeholder="Tell us about your project — location, timeline, specifications..."></textarea>
+      </div>
+      <!-- Green WhatsApp send button -->
+      <button class="form-submit" onclick="sendToWhatsApp()">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+        Send via WhatsApp
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- WHATSAPP FLOAT BUTTON -->
+<a href="https://wa.me/919880777944?text=Hi%2C%20I%E2%80%99m%20interested%20in%20your%20plywood%20products." class="whatsapp-btn" target="_blank" title="Chat on WhatsApp">
+  <svg width="30" height="30" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-brand-row">
+          <div class="footer-logo-container">
+            <img src="logo-full.png" alt="Pioneer Plywoods Logo">
+          </div>
+          <div class="nav-logo-name">Pioneer Plywoods <span>Est. 2014, Karnataka, India</span></div>
+        </div>
+        <p>Crafting quality plywood for Karnataka's builders, designers, and manufacturers. Strength in every sheet.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Products</h4>
+        <ul>
+          <li><a href="#products">Commercial Plywood</a></li>
+          <li><a href="#products">Marine Plywood</a></li>
+          <li><a href="#products">Structural Plywood</a></li>
+          <li><a href="#products">Flush Doors</a></li>
+          <li><a href="#products">Block Board</a></li>
+          <li><a href="#products">Particle Board</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#why">Why Us</a></li>
+          <li><a href="#about">Certifications</a></li>
+          <li><a href="#contact">Careers</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="#contact">Send a Message</a></li>
+          <li><a href="https://wa.me/919880777944" target="_blank">WhatsApp Us</a></li>
+          <li><a href="mailto:pioneerplywoods16@gmail.com">Email Us</a></li>
+          <li><a href="tel:+919880777944">+91 9880777944</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Pioneer Plywoods. All rights reserved.</span>
+      <span>Made in Karnataka 🌿 &nbsp;|&nbsp; <a href="#">Privacy Policy</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+
+  // Nav shadow on scroll
+  window.addEventListener('scroll', () => {
+    document.getElementById('mainNav').style.boxShadow =
+      window.scrollY > 20 ? '0 4px 28px rgba(0,0,0,0.22)' : 'none';
+  });
+
+  // Send form data to WhatsApp
+  function sendToWhatsApp() {
+    const name    = document.getElementById('f-name').value.trim();
+    const phone   = document.getElementById('f-phone').value.trim();
+    const product = document.getElementById('f-product').value.trim();
+    const qty     = document.getElementById('f-qty').value.trim();
+    const msg     = document.getElementById('f-msg').value.trim();
+
+    let text = `Hi Pioneer Plywoods! 👋\n\n`;
+    if (name)    text += `*Name:* ${name}\n`;
+    if (phone)   text += `*Phone:* ${phone}\n`;
+    if (product) text += `*Product:* ${product}\n`;
+    if (qty)     text += `*Quantity:* ${qty}\n`;
+    if (msg)     text += `*Message:* ${msg}\n`;
+    text += `\nPlease share details and pricing. Thank you!`;
+
+    const waUrl = `https://wa.me/919880777944?text=${encodeURIComponent(text)}`;
+    window.open(waUrl, '_blank');
+  }
+</script>
+</body>
+</html>
